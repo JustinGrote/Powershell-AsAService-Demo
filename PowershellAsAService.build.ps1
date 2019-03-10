@@ -15,4 +15,11 @@ task Test {
     Invoke-Pester
 }
 
+task Terraform {
+    push-location $BuildRoot\terraform\azureAutomation
+    terraform init
+    terraform apply --auto-approve
+    pop-location
+}
+
 task . Test
