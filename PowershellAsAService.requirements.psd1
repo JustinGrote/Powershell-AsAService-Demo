@@ -3,8 +3,10 @@
         Target = 'CurrentUser'
     }
     
-    Pester = 'latest'
+    AWSLambdaPSCore = 'latest'
 
+    Pester = 'latest'
+    
     'terraform' = @{
         DependencyType = 'Npm'
         Version = 'latest'
@@ -16,4 +18,6 @@
         Version = 'latest'
         Target = 'Global'
     }
+
+    
 }
