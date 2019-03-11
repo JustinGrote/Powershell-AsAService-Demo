@@ -43,4 +43,4 @@ task PublishAWSLambda {
     Publish-AWSPowerShellLambda -Name "PowershellAsAService-Example" -ScriptPath $BuildRoot\Examples\AWSLambdaExample.ps1 -Region 'us-west-2' -DisableInteractive
 }
 
-task . Dependencies,Test,TerraformAzureAutomation
+task . Dependencies,Test,PublishAWSLambda

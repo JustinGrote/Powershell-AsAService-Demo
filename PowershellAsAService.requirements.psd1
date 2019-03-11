@@ -13,11 +13,13 @@
         Target = 'Global'
     }
 
+    <#
     'serverless' = @{
         DependencyType = 'Npm'
         Version = 'latest'
         Target = 'Global'
     }
+    #>
 
     
 }
