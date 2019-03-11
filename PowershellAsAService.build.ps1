@@ -25,18 +25,18 @@ function Invoke-Terraform ($terraformDir) {
     $terraformStatePath = "$terraformWorkingDir/$terraformDirName"
     New-Item -Path $terraformStatePath -Type Directory -Erroraction SilentlyContinue
     push-location $terraformStatePath
-    terraform init $terraformdir
-    terraform plan -out "$terraformDirName.tfplan" $Terraformdir
+    terraform init "$terraformdir"
+    terraform plan -out "$terraformDirName.tfplan" "$Terraformdir"
     terraform apply --auto-approve "$terraformDirName.tfplan" 
     pop-location
 }
 
 task TerraformAzureAutomation TerraformWorkingDir,{
-    Invoke-Terraform $buildroot\terraform\azureAutomation
+    Invoke-Terraform "$buildroot/terraform/azureAutomation"
 }
 
 task TerraformAzureFunction TerraformWorkingDir,{
-    Invoke-Terraform $buildroot\terraform\azureFunction
+    Invoke-Terraform "$buildroot/terraform/azureFunction"
 }
 
 task PublishAWSLambda {
