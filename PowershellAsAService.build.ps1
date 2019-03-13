@@ -67,7 +67,7 @@ task TerraformAWSLambda TerraformWorkingDir,TestAWS,{
 
     #Run AWS Lambda Terraform
     Invoke-Terraform "$buildroot/terraform/awsLambda"
-},PublishAWSLambda
+}
 
 task PublishAWSLambda Test,{
     Publish-AWSPowerShellLambda -Name "PowershellAsAServiceExample" -ScriptPath $BuildRoot\Examples\AWSLambdaExample.ps1 -Region 'us-west-2' -DisableInteractive
