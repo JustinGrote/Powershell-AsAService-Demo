@@ -1,6 +1,6 @@
 
 variable "functionName" {
-  default = "powershellasaservicedemo"
+  default = "poshaasdemotf"
 }
 
 variable "region" {

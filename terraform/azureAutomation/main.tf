@@ -6,13 +6,17 @@ provider "local" {
   version = "~> 1.1"
 }
 
+variable "name" {
+  default = "poshaas-demotf-azauto"
+}
+
 resource "azurerm_resource_group" "example" {
-  name     = "powershellasaservice-demo-azautomation"
+  name     = "${var.name}"
   location = "westus2"
 }
 
 resource "azurerm_automation_account" "example" {
-  name                = "powershellasaservice-demo-azautomation"
+  name                = "${var.name}"
   location            = "${azurerm_resource_group.example.location}"
   resource_group_name = "${azurerm_resource_group.example.name}"
 

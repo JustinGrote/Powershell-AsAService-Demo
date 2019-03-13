@@ -4,6 +4,5 @@
     }
     
     AWSLambdaPSCore = 'latest'
-
     Pester = 'latest'
 }
