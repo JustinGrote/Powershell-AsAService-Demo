@@ -1,6 +1,6 @@
 provider "aws" {
   version = "~> 2.1"
-  region  = "${var.region}"
+  region  = "us-west-2"
 }
 
 data "aws_caller_identity" "this" {}

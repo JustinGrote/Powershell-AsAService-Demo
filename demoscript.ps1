@@ -32,8 +32,14 @@ promptstep "Make sure our environment is good" `
 promptstep "Install Prerequisites" `
 {.\build.ps1 Dependencies}
 
+promptstep "Deploy Example and HPWarranty in Azure Functions with Terraform" `
+{.\build.ps1 TerraformAWSLambda}
+
 promptstep "Deploy Example Script in Azure Automation with Terraform" `
 {.\build.ps1 TerraformAzureAutomation}
+
+promptstep "Deploy Example and HPWarranty in Azure Functions with Terraform" `
+{.\build.ps1 TerraformAzureFunction}
 
 promptstep "Tear down all the terraform resources" `
 {.\build.ps1 Destroy}

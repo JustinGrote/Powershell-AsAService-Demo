@@ -51,6 +51,12 @@ task TerraformAzureFunction TerraformWorkingDir,TestAzure,{
     Invoke-Terraform "$buildroot/terraform/azureFunction"
 }
 
+task TerraformAzureFunctionRefresh {
+    push-location $buildroot\buildoutput\terraform\azureFunction\
+    terraform taint azurerm_function_app.this
+    pop-location
+},TerraformAzureFunction
+
 task TerraformAWSLambda TerraformWorkingDir,TestAWS,{
     $lambdaZipPath = "$buildroot/BuildOutput/AWSLambdaExample.zip"
     $lambdaPackageInfo = New-AWSPowershellLambdaPackage -ScriptPath $buildroot/Examples/AWSLambdaExample.ps1 -OutputPackage $lambdaZipPath
@@ -61,7 +67,7 @@ task TerraformAWSLambda TerraformWorkingDir,TestAWS,{
 
     #Run AWS Lambda Terraform
     Invoke-Terraform "$buildroot/terraform/awsLambda"
-}
+},PublishAWSLambda
 
 task PublishAWSLambda Test,{
     Publish-AWSPowerShellLambda -Name "PowershellAsAServiceExample" -ScriptPath $BuildRoot\Examples\AWSLambdaExample.ps1 -Region 'us-west-2' -DisableInteractive
@@ -73,7 +79,7 @@ task Destroy {
     if ($destroyConfirm -eq 'BURNITDOWN') {
         Get-Childitem -ErrorAction silentlycontinue -Directory "$BuildRoot\BuildOutput\terraform" | foreach {
             write-host -fore cyan "Destroying $($PSItem.Name)"
-            Push-Location $PSItem
+            Push-Location $PSItem.fullname
             terraform destroy --auto-approve
             Pop-Location
         }
@@ -83,4 +89,4 @@ task Destroy {
 task Test TestAzure,TestAWS
 task Terraform TerraformAzureFunction,TerraformAzureAutomation,TerraformAWSLambda
 
-task . Dependencies,Terraform
+task . Dependencies,Test,Terraform
