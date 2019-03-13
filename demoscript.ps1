@@ -17,5 +17,8 @@ promptstep "Make sure our environment is good" `
 promptstep "Install Prerequisites" `
 {.\build.ps1 Dependencies}
 
+promptstep "Deploy Example Script in Azure Automation with Terraform"
+{.\build.ps1 TerraformAzureAutomation}
+
 promptstep "Tear down all the terraform resources" `
 {.\build.ps1 Destroy}

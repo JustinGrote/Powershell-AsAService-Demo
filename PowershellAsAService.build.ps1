@@ -71,7 +71,7 @@ task Destroy {
     write-host -fore Red "HERE THERE BE DRAGONS. THIS WILL DESTROY EVERYTHING CREATED BY TERRAFORM!  You should use terraform destroy individually in each folder and confirm unless you know what you are doing."
     $destroyConfirm = read-host "Type BURNITDOWN and enter to continue, anything else aborts"
     if ($destroyConfirm -eq 'BURNITDOWN') {
-        Get-Childitem -Directory "$BuildRoot\BuildOutput\Terraform" | foreach {
+        Get-Childitem -ErrorAction silentlycontinue -Directory "$BuildRoot\BuildOutput\Terraform" | foreach {
             write-host -fore cyan "Destroying $($PSItem.Name)"
             Push-Location $PSItem
             terraform destroy --auto-approve
