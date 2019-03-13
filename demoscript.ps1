@@ -12,10 +12,10 @@ function promptstep ([string]$prompt, $cmd) {
 }
 
 promptstep "Make sure our environment is good" `
-{Invoke-Build Test}
+{.\build.ps1 Test}
 
 promptstep "Install Prerequisites" `
-{Invoke-Build Dependencies}
+{.\build.ps1 Dependencies}
 
 promptstep "Tear down all the terraform resources" `
-{Invoke-Build Destroy}
+{.\build.ps1 Destroy}
