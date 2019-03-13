@@ -2,4 +2,9 @@
 A demonstration repository for several of the ways to run Powershell As A Service (Azure Automation, AWS Lambda, Azure Functions)
 
 ## Getting Started
-Try opening demoscript.ps1 and stepping through the items one by one. I hope to eventually make this a PSKoans exercise.
+[![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com/powershell)
+1. Open a Local Powershell Core (6.1) Terminal or use Cloud Shell
+3. Clone the repository with `git clone https://github.com/JustinGrote/Powershell-AsAService-Demo.git`
+4. Change to the repository and run `.\demoscript.ps1`
+
+I hope to eventually make this a PSKoans exercise.

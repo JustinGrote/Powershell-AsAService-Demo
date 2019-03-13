@@ -1,15 +1,21 @@
 #Powershell As A Service Demo
-$lines = [Environment]::NewLine + "===========================================================================================" + [Environment]::NewLine
-function startcmd ([scriptblock]$cmd) {
+$ErrorActionPreference = 'Stop'
+
+$i=1
+function promptstep ([string]$prompt, $cmd) {
+    $lines = [Environment]::NewLine + "===========================================================================================" + [Environment]::NewLine
+    write-host -fore Green "$lines Step $i`: $prompt $lines"
+    $null = read-host "Press enter to run command $cmd"
     write-host -fore Cyan "RUNNING COMMAND: $cmd"
     & $cmd
-}
-function promptstep ($string) {
-    write-host -fore Green "$lines $string $lines";read-host "Press enter to continue..."
+    $i++
 }
 
-promptstep "Step 1: Make sure our environment is good"
-startcmd {Invoke-Build Test}
+promptstep "Make sure our environment is good" `
+{Invoke-Build Test}
 
+promptstep "Install Prerequisites" `
+{Invoke-Build Dependencies}
 
-
+promptstep "Tear down all the terraform resources" `
+{Invoke-Build Destroy}
