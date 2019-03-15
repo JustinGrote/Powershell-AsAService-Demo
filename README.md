@@ -8,3 +8,6 @@ A demonstration repository for several of the ways to run Powershell As A Servic
 4. Change to the repository and run `.\demoscript.ps1`
 
 I hope to eventually make this a PSKoans exercise.
+
+# Issues
+*Please* file an issue if you have a problem or you think this isn't easy to use. The goal is to make it better so we are all better!
