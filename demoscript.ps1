@@ -32,7 +32,7 @@ promptstep "Make sure our environment is good" `
 promptstep "Install Prerequisites" `
 {.\build.ps1 Dependencies}
 
-promptstep "Deploy Example and HPWarranty in Azure Functions with Terraform" `
+promptstep "Deploy Example in AWS Lambda with Terraform" `
 {.\build.ps1 TerraformAWSLambda}
 
 promptstep "Deploy Example Script in Azure Automation with Terraform" `
